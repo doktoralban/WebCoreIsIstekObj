@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace WebCoreIsIstek.Core.Entities
 {
-    public partial class dbMakinaBakimContext : DbContext
+    public partial class EX_dbMakinaBakimContext : DbContext
     {
-        public dbMakinaBakimContext()
+        public EX_dbMakinaBakimContext()
         {
         }
 
-        public dbMakinaBakimContext(DbContextOptions<dbMakinaBakimContext> options)
+        public EX_dbMakinaBakimContext(DbContextOptions<EX_dbMakinaBakimContext> options)
             : base(options)
         {
         }
@@ -33,8 +33,9 @@ namespace WebCoreIsIstek.Core.Entities
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=localhost;Database=dbMakinaBakim;Integrated Security=True");
+                //var connection = WebCoreIsIstek.Core.Configuration.WebCoreIsIstekSettings.
+                //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                //optionsBuilder.UseSqlServer("Server=localhost;Database=dbMakinaBakim;Integrated Security=True");
             }
         }
 

@@ -41,11 +41,17 @@ namespace WebCoreIsIstek.Infrastructure.Repository
             //    .ToListAsync();
         }
 
-        public async Task<IEnumerable<Product>> GetProductByCategoryAsync(int categoryId)
+        //TODO: Değiştirilecek
+        public async Task<IEnumerable<TbJobTypes>> GetProductByCategoryAsync(int categoryId)
         {
-            return await _dbContext.Products
-                .Where(x => x.CategoryId==categoryId)
+            return await _dbContext.TbJobTypes
+                .Where(x => x.JobTypeId==categoryId)
                 .ToListAsync();
+        }
+
+        Task<IEnumerable<Product>> IProductRepository.GetProductByCategoryAsync(int categoryId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using WebCoreIsIstek.Core.Entities.Base;
 
 namespace WebCoreIsIstek.Core.Entities
 {
+
+    [Table("TbJobRequests")]
     public partial class TbJobRequests : Entity
     {
         public long JobRequestId { get; set; }
