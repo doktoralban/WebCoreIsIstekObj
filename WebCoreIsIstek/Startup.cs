@@ -1,25 +1,16 @@
-using WebCoreIsIstek.Application.Interfaces;
-using WebCoreIsIstek.Application.Services;
-using WebCoreIsIstek.Core;
-using WebCoreIsIstek.Core.Interfaces;
-using WebCoreIsIstek.Infrastructure.Logging;
-using WebCoreIsIstek.Infrastructure.Data;
-using WebCoreIsIstek.Infrastructure.Repository;
-using WebCoreIsIstek.HealthChecks;
-using WebCoreIsIstek.Interfaces;
-using WebCoreIsIstek.Services;
-using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using WebCoreIsIstek.Core.Repositories;
-using WebCoreIsIstek.Core.Repositories.Base;
-using WebCoreIsIstek.Core.Configuration;
+//using WebCoreIsIstek.Core.Configuration;
+//using WebCoreIsIstek.Core.Interfaces;
+//using WebCoreIsIstek.Core.Repositories.Base;
+using WebCoreIsIstek.HealthChecks;
+using WebCoreIsIstek.Infrastructure.Data;
+using WebCoreIsIstek.Infrastructure.Logging;
 using WebCoreIsIstek.Infrastructure.Repository.Base;
 
 //WebCoreIsIstek
@@ -90,14 +81,14 @@ namespace WebCoreIsIstek
         private void ConfigureWebCoreIsIstekServices(IServiceCollection services)
         {
             // Add Core Layer
-            services.Configure<WebCoreIsIstekSettings>(Configuration);
+            //services.Configure<WebCoreIsIstekSettings>(Configuration);
 
             // Add Infrastructure Layer
             ConfigureDatabases(services);
-            services.AddScoped(typeof( IRepository<>), typeof(Repository<>));
+            //services.AddScoped(typeof( IRepository<>), typeof(Repository<>));
             //services.AddScoped<IProductRepository, ProductRepository>();
             //services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
+            //services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
 
             //// Add Application Layer
             //services.AddScoped<IProductService, ProductService>();
@@ -127,9 +118,12 @@ namespace WebCoreIsIstek
             //services.AddDbContext<AspnetRunContext>(c =>
             //    c.UseInMemoryDatabase("AspnetRunConnection"));
 
+            var cnnStr= Configuration.GetConnectionString("WebCoreIsIstekConnection");
             // use real database
+            services.AddEntityFrameworkSqlServer();
+
             services.AddDbContext<WebCoreIsIstekContext>(c =>
-                c.UseSqlServer(Configuration.GetConnectionString("WebCoreIsIstekConnection")));
+                c.UseSqlServer(cnnStr));
         }
 
 

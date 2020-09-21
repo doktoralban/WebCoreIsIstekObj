@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using WebCoreIsIstek.Core.Entities;
 
 namespace WebCoreIsIstek.Core.Repositories.Base
 {
@@ -26,5 +27,5 @@ namespace WebCoreIsIstek.Core.Repositories.Base
         Task UpdateAsync(T entity);
         Task DeleteAsync(T entity);
         Task<int> CountAsync(ISpecification<T> spec);
-    }
+     }
 }
